@@ -60,3 +60,6 @@ Author:
 This project was built by khizar hayyat as part of a machine learning portfolio.  
 For collaboration or freelance work, connect via GitHub, LinkedIn, or Upwork.
 
+Model link:
+
+https://colab.research.google.com/drive/1xCW5SvwQwc5y8FQ81seYpmnjz-lCUoI_?usp=drive_link
