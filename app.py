@@ -5,11 +5,11 @@ import numpy as np
 import os
 
 app = Flask(__name__)
-model = tf.keras.models.load_model("skin_disease_model.h5")
+model = tf.keras.models.load_model("model.h5")
+print(model.output_shape)  # Check the output shape of the model
 
 # Replace with your actual class labels
-class_names = ['Melanoma', 'Nevus', 'Basal Cell Carcinoma', 'Actinic Keratosis',
-               'Benign Keratosis', 'Dermatofibroma', 'Vascular Lesion']
+class_names = ['akiec', 'bcc', 'bkl', 'df', 'mel', 'nv', 'vasc']
 
 def preprocess_image(img_path):
     img = image.load_img(img_path, target_size=(224, 224))  # match your model's input
@@ -31,6 +31,11 @@ def index():
 
             processed = preprocess_image(img_path)
             pred = model.predict(processed)
+            print("Prediction array:", pred)
+            print("Prediction shape:", pred.shape)
+            print("Argmax result:", np.argmax(pred))
+            print("Class names length:", len(class_names))
+
             label = class_names[np.argmax(pred)]
             confidence = np.max(pred)
 
